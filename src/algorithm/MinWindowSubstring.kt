@@ -5,11 +5,11 @@ package algorithm
 import kotlin.text.iterator
 
 fun MinWindowSubstring(strArr: Array<String>): String {
-    val s = strArr[0]
-    val t = strArr[1]
+    val n = strArr[0]
+    val k = strArr[1]
 
     val targetFreq = mutableMapOf<Char, Int>()
-    for (char in t) {
+    for (char in k) {
         targetFreq[char] = targetFreq.getOrDefault(char, 0) + 1
     }
 
@@ -20,8 +20,8 @@ fun MinWindowSubstring(strArr: Array<String>): String {
     var have = 0
     val need = targetFreq.size
 
-    for (right in s.indices) {
-        val rightChar = s[right]
+    for (right in n.indices) {
+        val rightChar = n[right]
         windowFreq[rightChar] = windowFreq.getOrDefault(rightChar, 0) + 1
 
         if (targetFreq.containsKey(rightChar) &&
@@ -33,10 +33,10 @@ fun MinWindowSubstring(strArr: Array<String>): String {
             val windowSize = right - left + 1
             if (windowSize < minLen) {
                 minLen = windowSize
-                minWindow = s.substring(left, right + 1)
+                minWindow = n.substring(left, right + 1)
             }
 
-            val leftChar = s[left]
+            val leftChar = n[left]
             windowFreq[leftChar] = windowFreq.getOrDefault(leftChar, 0) - 1
             if (targetFreq.containsKey(leftChar) &&
                 windowFreq[leftChar]!! < targetFreq[leftChar]!!) {
