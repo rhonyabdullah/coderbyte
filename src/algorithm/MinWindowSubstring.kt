@@ -1,5 +1,9 @@
 @file:Suppress("FunctionName")
 
+package algorithm
+
+import kotlin.text.iterator
+
 fun MinWindowSubstring(strArr: Array<String>): String {
     val s = strArr[0]
     val t = strArr[1]

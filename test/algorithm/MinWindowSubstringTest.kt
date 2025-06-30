@@ -1,16 +1,17 @@
-import org.junit.jupiter.api.Assertions.assertEquals
+package algorithm
+
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
-
 
 class MinWindowSubstringTest {
     @ParameterizedTest
     @MethodSource("provideTestCases")
     fun `it should find the minimum window substring`(input: Array<String>, expected: String) {
         val actual = MinWindowSubstring(input)
-        assertEquals(expected, actual)
+        Assertions.assertEquals(expected, actual)
     }
 
     companion object {
